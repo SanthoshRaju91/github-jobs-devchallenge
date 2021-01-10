@@ -1,6 +1,6 @@
 export default function Search({ handleSearchSubmit }) {
   return (
-    <div className="search-container mt-8 relative">
+    <div className="search-container mt-8 h-32 relative">
       <div className="search-container__bg absolute">
         <img className="object-cover h-32 w-full rounded-md" src="backgroundImg.png" alt="Search background"></img>
       </div>
