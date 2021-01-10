@@ -1,15 +1,15 @@
-import Head from 'next/head'
+import Head from "next/head";
+import Layout from "../components/Layout";
+import JobsList from "../containers/JobsList/JobsList";
 
 export default function Home() {
   return (
-    <div className="container">
+    <Layout>
       <Head>
         <title>Github Jobs</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>
-        <h1>Initial page</h1>
-      </div>
-    </div>
-  )
+      <JobsList />
+    </Layout>
+  );
 }
