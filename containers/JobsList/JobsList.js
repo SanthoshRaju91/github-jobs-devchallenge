@@ -1,26 +1,32 @@
-import { useEffect } from "react";
 import Filter from "../../components/Filter";
 import JobCard from "../../components/JobCard";
 import Search from "../../components/Search";
 import useJobsList from "./useJobsList";
 
 export default function JobsList() {
-  const { isLoading, jobs } = useJobsList()
+  const {
+    isLoading,
+    jobs = [],
+    handleFullTimeChange,
+    handleSearchChange,
+    handleSearchLocationChange,
+    handlePredefinedLocationChange
+  } = useJobsList()
 
-  function handleSearchSubmit(event) {
-    event.preventDefault();
+  function handleSearchSubmit(value) {
+    handleSearchChange(value)
   }
 
   function handlePositionFilter(event) {
-    console.log(event.target.checked)
+    handleFullTimeChange(event.target.checked)
   }
 
-  function handleLocationSearchFilter(event) {
-    event.preventDefault()
+  function handleLocationSearchFilter(value) {
+    handleSearchLocationChange(value)
   }
 
   function handlePredefinedLocationFilter(event) {
-    console.log(event.target.value)
+    handlePredefinedLocationChange(event.target.value)
   }
 
   return (

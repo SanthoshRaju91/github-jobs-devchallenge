@@ -1,11 +1,20 @@
+import React from 'react'
+
 export default function Search({ handleSearchSubmit }) {
+  const searchInputRef = React.createRef()
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    handleSearchSubmit(searchInputRef.current.value)
+  }
+
   return (
     <div className="search-container mt-8 h-32 relative">
       <div className="search-container__bg absolute">
         <img className="object-cover h-32 w-full rounded-md" src="backgroundImg.png" alt="Search background"></img>
       </div>
       <div className="search-container__form w-11/12 left-4 top-10 absolute z-20">
-        <form onSubmit={handleSearchSubmit}>
+        <form onSubmit={handleSubmit}>
             <div className="p-1 w-full bg-white rounded-sm shadow-md flex items-center">
                 <span className="inline-block pl-5">
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -15,6 +24,7 @@ export default function Search({ handleSearchSubmit }) {
                 <input
                     className="w-10/12 h-10 pl-2 text-sm placeholder-gray-400 tracking-wide font-extralight focus:none focus:border-blue-400" 
                     placeholder="Title, companies, expertise..." 
+                    ref={searchInputRef}
                 />
                 <button className="px-5 py-3 bg-blue-500 rounded-md text-white text-sm font-light">
                     Search

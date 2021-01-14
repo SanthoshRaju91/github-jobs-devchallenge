@@ -1,6 +1,13 @@
+import React from 'react'
 import { FaGlobeAmericas } from 'react-icons/fa'
 
 export default function Filter({ handlePositionFilter, handleLocationSearchFilter, handlePredefinedLocationFilter }) {
+    const inputLocationRef = React.createRef()
+
+    function handleSubmit(event) {
+        event.preventDefault()
+        handleLocationSearchFilter(inputLocationRef.current.value)
+    }
     return (
         <div className="filter-container">
             <div className="filter-container__positions my-8 px-2 flex space-x-2 items-center">
@@ -10,10 +17,15 @@ export default function Filter({ handlePositionFilter, handleLocationSearchFilte
             <div className="filter-container__location my-8">
                 <h3 className="text-sm font-bold tracking-wide text-gray-300 uppercase">Location</h3>
                 <div className="filter-container__location--search-form my-4 w-full">
-                    <form onSubmit={handleLocationSearchFilter}>
+                    <form onSubmit={handleSubmit}>
                         <div className="relative flex px-4 space-x-4  bg-white rounded shadow flex-wrap items-stretch mb-3 h-12">
                             <FaGlobeAmericas className="text-gray-300 h-full" />
-                            <input className="h-full w-11/12 placeholder-gray-300 text-sm font-light text-gray-700 relative outline-none focus:outline-none focus:shadow-outline" type="text" placeholder="City, state, zip code or country" />
+                            <input
+                                className="h-full w-11/12 placeholder-gray-300 text-sm font-light text-gray-700 relative outline-none focus:outline-none focus:shadow-outline"
+                                type="text"
+                                placeholder="City, state, zip code or country"
+                                ref={inputLocationRef}
+                            />
                         </div>                        
                     </form>
                 </div>

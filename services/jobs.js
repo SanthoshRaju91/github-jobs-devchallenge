@@ -2,8 +2,8 @@ import fetch from "./fetch";
 
 export function constructJobsFilter() {}
 
-export async function fetchJobs() {
-  const response = await fetch("/jobs");
+export async function fetchJobs(query) {
+  const response = await fetch(`/jobs${query}`);
   return response.data;
 }
 
